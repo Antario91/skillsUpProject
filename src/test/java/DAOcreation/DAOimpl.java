@@ -10,7 +10,7 @@ public class DAOimpl implements DAO {
 	static SessionFactory sessionFactory;
 	
 	static{
-		sessionFactory = HibernateUtil.getSessionAnnotationFactory();
+		sessionFactory = HibernateUtil.getFactory();
 		System.out.println("DAOimpl is created!");
 	}
 
@@ -22,7 +22,9 @@ public class DAOimpl implements DAO {
 		session.save(obj);
 		System.out.println("Object was persisted");
 		session.getTransaction().commit();
+		System.out.println("Transaction was commited");
 		session.close();
+		System.out.println("Session was closed");
 
 	}
 
