@@ -17,11 +17,11 @@ public class CarShowroom {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name = "Name")
+	@Column(name = "Title")
 	private String name;
 	
-	@Column(name = "Owner")
-	private String owner;
+	@Embedded
+	private Owner owner;
 	
 	@Embedded
 	private Address address;
@@ -32,7 +32,7 @@ public class CarShowroom {
 		
 	}
 	
-	public CarShowroom(String name, String owner, Address address) {
+	public CarShowroom(String name, Owner owner, Address address) {
 		this.name = name;
 		this.owner = owner;
 		this.address = address;
@@ -43,10 +43,6 @@ public class CarShowroom {
 		return id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public String getName() {
 		return name;
 	}
@@ -55,11 +51,11 @@ public class CarShowroom {
 		this.name = name;
 	}
 
-	public String getOwner() {
+	public Owner getOwner() {
 		return owner;
 	}
 
-	public void setOwner(String owner) {
+	public void setOwner(Owner owner) {
 		this.owner = owner;
 	}
 

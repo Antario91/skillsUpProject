@@ -23,6 +23,10 @@ public class DAOCarShowroomImpl implements DAOCarShowroom {
 		session.close();
 	}
 	
+	public void commitToDB(){
+		session.getTransaction().commit();
+	}
+	
 	public void closeSessionFactory(){
 		sessionFactory.close();
 	}
@@ -34,6 +38,7 @@ public class DAOCarShowroomImpl implements DAOCarShowroom {
 
 	public void deleteCarShowroom(CarShowroom obj) {
 		session.delete(obj);
+	
 	}
 
 	public CarShowroom getCarShowroom(int id) {
