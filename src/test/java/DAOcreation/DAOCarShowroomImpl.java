@@ -22,6 +22,10 @@ public class DAOCarShowroomImpl implements DAOCarShowroom {
 		session.getTransaction().commit();
 		session.close();
 	}
+	
+	public void closeSessionFactory(){
+		sessionFactory.close();
+	}
 
 	public void addCarShowroom(CarShowroom obj) {
 		session.save(obj);

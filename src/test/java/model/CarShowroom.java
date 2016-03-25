@@ -1,6 +1,7 @@
 package model;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,13 +18,13 @@ public class CarShowroom {
 	private int id;
 	
 	@Column(name = "Name")
-	String name;
+	private String name;
 	
 	@Column(name = "Owner")
-	String owner;
+	private String owner;
 	
-	@Column(name = "Address")
-	String address;
+	@Embedded
+	private Address address;
 	
 	
 	//-----------------------------------Constructors
@@ -31,7 +32,7 @@ public class CarShowroom {
 		
 	}
 	
-	public CarShowroom(String name, String owner, String address) {
+	public CarShowroom(String name, String owner, Address address) {
 		this.name = name;
 		this.owner = owner;
 		this.address = address;
@@ -62,11 +63,11 @@ public class CarShowroom {
 		this.owner = owner;
 	}
 
-	public String getAddress() {
+	public Address getAddress() {
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public void setAddress(Address address) {
 		this.address = address;
 	}
 
