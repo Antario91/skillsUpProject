@@ -1,16 +1,30 @@
 package model;
 
+import java.util.Objects;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "`Auto Factory`")
 public class AutoFactory {
-	@Id
-    @ManyToOne
+   @Id
+	@Column(name = "ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+   private int id;
+	
+	public int getId() {
+	return id;
+}
+
+	@ManyToOne
 	private Automobile auto;
 	
-	@Id
     @ManyToOne
 	private ManufacturingPlant factory;
 	
@@ -41,6 +55,22 @@ public class AutoFactory {
 		this.factory = factory;
 	}
 
-	
+	 @Override
+	    public boolean equals(Object o) {
+	        if ( this == o ) {
+	            return true;
+	        }
+	        if ( o == null || getClass() != o.getClass() ) {
+	            return false;
+	        }
+	        AutoFactory that = (AutoFactory) o;
+	        return Objects.equals( auto, that.auto ) &&
+	                Objects.equals( factory, that.factory );
+	    }
+
+	    @Override
+	    public int hashCode() {
+	        return Objects.hash( auto, factory );
+	    }
 	
 }

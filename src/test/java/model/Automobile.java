@@ -3,6 +3,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -47,8 +48,8 @@ public class Automobile {
 	@OneToMany(mappedBy = "auto", orphanRemoval = true, cascade = CascadeType.ALL)
 	private Set<CarKit> kit;
 	
-//	@OneToMany(mappedBy = "auto", cascade = CascadeType.ALL, orphanRemoval = true)
-//	private List<AutoFactory> autofactory = new ArrayList<AutoFactory>();
+	@OneToMany(mappedBy = "auto", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<AutoFactory> autofactory = new ArrayList<AutoFactory>();
 	
 	//-----------------------------------Constructors
 	public Automobile(){
@@ -148,6 +149,23 @@ public class Automobile {
 	public int getId() {
 		return id;
 	}
+	
+	@Override
+    public boolean equals(Object o) {
+        if ( this == o ) {
+            return true;
+        }
+        if ( o == null || getClass() != o.getClass() ) {
+            return false;
+        }
+        Automobile auto = (Automobile) o;
+        return Objects.equals( id, auto.id );
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash( id );
+    }
 	
 	@Override
 	public String toString(){

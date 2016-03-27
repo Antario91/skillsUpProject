@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -42,14 +43,30 @@ public class ManufacturingPlant {
 		this.country = country;
 	}
 	
-	public List<AutoFactory> getAutoFactory(){
-		return autofactory;
-	}
+//	public List<AutoFactory> getAutoFactory(){
+//		return autofactory;
+//	}
 
 	public int getId() {
 		return id;
 	}
 	
-	
+	@Override
+    public boolean equals(Object o) {
+        if ( this == o ) {
+            return true;
+        }
+        if ( o == null || getClass() != o.getClass() ) {
+            return false;
+        }
+        ManufacturingPlant factory = (ManufacturingPlant) o;
+        return Objects.equals(id, factory.id) &&
+                Objects.equals(country, factory.country);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash( id, country);
+    }
 
 }
