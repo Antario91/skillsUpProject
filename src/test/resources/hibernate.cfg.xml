@@ -26,6 +26,9 @@
         <mapping class="model.CarShowroom"/>
         <mapping class="model.Address"/>
         <mapping class="model.Owner"/>
+        <mapping class="model.Automobile"/>
+        <mapping class="model.CarKit"/>
+        
 
     </session-factory>
 
