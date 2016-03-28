@@ -17,6 +17,10 @@ public class WorkingWithSession {
 		session.getTransaction().begin();
 	}
 	
+	public void flushSession(){
+		session.flush();
+	}
+	
 	public void endingSession(){
 		session.getTransaction().commit();
 		session.close();

@@ -29,7 +29,7 @@
         <mapping class="model.Automobile"/>
         <mapping class="model.CarKit"/>
         <mapping class="model.ManufacturingPlant"/>
-        <mapping class="model.AutoFactory"/>
+    	<mapping class="model.AutoFactory"/>
 
     </session-factory>
 

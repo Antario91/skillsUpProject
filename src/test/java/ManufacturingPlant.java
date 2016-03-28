@@ -1,6 +1,5 @@
 package model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -20,7 +19,7 @@ import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "`Manufacturing plant`")
-public class ManufacturingPlant implements Serializable {
+public class ManufacturingPlant {
 	@Id
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,13 +28,13 @@ public class ManufacturingPlant implements Serializable {
 	@Column(name = "Country")
 	private String country;
 	
-//	@ManyToMany(cascade=CascadeType.ALL)  
-//    @JoinTable(name="auto_factory", joinColumns=@JoinColumn(name="factory_id"), inverseJoinColumns=@JoinColumn(name="auto_id"))  
-//	private Set<Automobile> auto;
+	@ManyToMany(cascade=CascadeType.ALL)  
+    @JoinTable(name="auto_factory", joinColumns=@JoinColumn(name="factory_id"), inverseJoinColumns=@JoinColumn(name="auto_id"))  
+	private Set<Automobile> auto;
 	
 	
-	@OneToMany(mappedBy = "factory", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<AutoFactory> autofactory = new ArrayList<AutoFactory>();
+//	@OneToMany(mappedBy = "factory", cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<AutoFactory> autofactory = new ArrayList<AutoFactory>();
 	
 	
 	public ManufacturingPlant(){
@@ -54,18 +53,18 @@ public class ManufacturingPlant implements Serializable {
 		this.country = country;
 	}
 	
-//	public Set<Automobile> getAuto() {
-//		return auto;
-//	}
-//
-//	public void setAuto(Set<Automobile> auto) {
-//		this.auto = auto;
-//	}
+	public Set<Automobile> getAuto() {
+		return auto;
+	}
+
+	public void setAuto(Set<Automobile> auto) {
+		this.auto = auto;
+	}
 
 	
-	public List<AutoFactory> getAutoFactory(){
-		return autofactory;
-	}
+//	public List<AutoFactory> getAutoFactory(){
+//		return autofactory;
+//	}
 
 	public int getId() {
 		return id;

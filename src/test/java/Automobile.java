@@ -1,7 +1,6 @@
 package model;
 
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -19,7 +18,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Automobile")
-public class Automobile implements Serializable {
+public class Automobile {
 	
 	@Id
 	@Column(name = "ID")
@@ -50,12 +49,12 @@ public class Automobile implements Serializable {
 	@OneToMany(mappedBy = "auto", orphanRemoval = true, cascade = CascadeType.ALL)
 	private Set<CarKit> kit;
 	
-//	@ManyToMany(cascade=CascadeType.ALL, mappedBy="auto")
-//	private Set<ManufacturingPlant> factories;
-//	
+	@ManyToMany(cascade=CascadeType.ALL, mappedBy="auto")
+	private Set<ManufacturingPlant> factories;
 	
-	@OneToMany(mappedBy = "auto", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<AutoFactory> autofactory = new ArrayList<AutoFactory>();
+	
+//	@OneToMany(mappedBy = "auto", cascade = CascadeType.ALL, orphanRemoval = true)
+//	private List<AutoFactory> autofactory = new ArrayList<AutoFactory>();
 	
 
 	//-----------------------------------Constructors
@@ -139,27 +138,27 @@ public class Automobile implements Serializable {
 		this.kit = kit;
 	}
 	
-//	public Set<ManufacturingPlant> getFactories() {
-//		return factories;
-//	}
-//
-//	public void setFactories(Set<ManufacturingPlant> factories) {
-//		this.factories = factories;
-//	}
+	public Set<ManufacturingPlant> getFactories() {
+		return factories;
+	}
+
+	public void setFactories(Set<ManufacturingPlant> factories) {
+		this.factories = factories;
+	}
 	
-    public void addManufacturingPlant(ManufacturingPlant factory) {
-    	AutoFactory temp = new AutoFactory(this, factory);
-    	autofactory.add(temp);
-    	factory.getAutoFactory().add(temp);
-    }
-    
-    public void removeManufacturingPlant(ManufacturingPlant factory) {
-    	AutoFactory temp = new AutoFactory(this, factory);
-    	factory.getAutoFactory().remove(temp);
-    	autofactory.remove(temp);
-        temp.setAuto(null);
-        temp.setFactory(null);
-    }
+//    public void addManufacturingPlant(ManufacturingPlant factory) {
+//    	AutoFactory temp = new AutoFactory(this, factory);
+//    	autofactory.add(temp);
+//    	factory.getAutoFactory().add(temp);
+//    }
+//    
+//    public void removeManufacturingPlant(ManufacturingPlant factory) {
+//    	AutoFactory temp = new AutoFactory(this, factory);
+//    	factory.getAutoFactory().remove(temp);
+//    	autofactory.remove(temp);
+//        temp.setAuto(null);
+//        temp.setFactory(null);
+//    }
 
 	public int getId() {
 		return id;

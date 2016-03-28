@@ -11,7 +11,7 @@ import java.util.Set;
 import DAOcreation.WorkingWithSession;
 
 
-public class ProjectMain3 {
+public class ProjectMain {
 
 	public static void main(String[] args) {
 		CarKit kit1 = new CarKit(true, false, true, false, true);
@@ -44,7 +44,8 @@ public class ProjectMain3 {
 		auto3.setCarKit(setKit3);
 		
 		ManufacturingPlant factory1 = new ManufacturingPlant("Ukraine");
-		ManufacturingPlant factory2 = new ManufacturingPlant("`Czech Republic`");
+		ManufacturingPlant factory2 = new ManufacturingPlant("Czech Republic");
+		ManufacturingPlant factory3 = new ManufacturingPlant("China");
 		
 		System.out.println("До создания Session");
 		
@@ -58,9 +59,54 @@ public class ProjectMain3 {
 		dao.addPersistence(auto3);
 		dao.addPersistence(factory1);
 		dao.addPersistence(factory2);
+		dao.addPersistence(factory3);
 		System.out.println("Added");
 		
+		Set<Automobile> setAuto1 = new HashSet<Automobile>();
+		Set<Automobile> setAuto2 = new HashSet<Automobile>();
+		Set<Automobile> setAuto3 = new HashSet<Automobile>();
 		
+		setAuto1.add(auto1);
+		setAuto1.add(auto2);
+		setAuto1.add(auto3);
+		
+		setAuto2.add(auto2);
+		setAuto2.add(auto3);
+		
+		setAuto3.add(auto3);
+		
+		
+		Set<ManufacturingPlant> setFactory1 = new HashSet<ManufacturingPlant>();
+		Set<ManufacturingPlant> setFactory2 = new HashSet<ManufacturingPlant>();
+		Set<ManufacturingPlant> setFactory3 = new HashSet<ManufacturingPlant>();
+		
+		setFactory1.add(factory1);
+				
+		setFactory2.add(factory1);
+		setFactory2.add(factory2);
+		
+		setFactory3.add(factory1);
+		setFactory3.add(factory2);
+		setFactory3.add(factory3);
+		
+		auto1.setFactories(setFactory1);
+		auto2.setFactories(setFactory2);
+		auto3.setFactories(setFactory3);
+		
+		factory1.setAuto(setAuto1);
+		factory2.setAuto(setAuto2);
+		factory3.setAuto(setAuto3);
+		
+		Set<ManufacturingPlant> fact = auto3.getFactories();
+		System.out.println(fact.size());
+		fact.remove(factory2);
+		dao.flushSession();
+		
+//		dao.deletePersistence(factory3);
+//	
+//		Set<Automobile> gettedAutos = factory1.getAuto();
+//		System.out.println(gettedAutos.size());
+//		gettedAutos.remove(auto3);
 		
 //		dao.deletePersistence(auto1);
 //		Automobile auto3_1 = (Automobile) dao.getPersistence(auto1, 1);

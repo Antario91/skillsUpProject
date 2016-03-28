@@ -1,6 +1,5 @@
 package model;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -13,7 +12,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "`Auto Factory`")
-public class AutoFactory implements Serializable {
+public class AutoFactory {
 //	@Id
 //	@Column(name = "ID")
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)
