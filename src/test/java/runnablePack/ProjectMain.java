@@ -69,7 +69,8 @@ public class ProjectMain {
 		auto3.addManufacturingPlant(factory2);
 		auto3.addManufacturingPlant(factory3);
 		
-//		auto3.removeManufacturingPlant(factory2);
+		auto3.removeManufacturingPlant(factory2);
+		auto2.removeManufacturingPlant(factory1);
 //		auto2.removeManufacturingPlant(factory2);
 //		dao.deletePersistence(factory2);
 		
@@ -122,24 +123,24 @@ public class ProjectMain {
 //		gettedAutos.remove(auto3);
 		
 //		dao.deletePersistence(auto1);
-//		Automobile auto3_1 = (Automobile) dao.getPersistence(auto1, 1);
-//		
-//		System.out.println("\n"+ auto3_1 + "\n");
+		Automobile auto3_1 = (Automobile) dao.getPersistence(auto1, 1);
+
+		System.out.println("\n"+ auto3_1 + "\n");
 		
 		
 //		setKit2.remove(kit3);
 		
 		
-//		Set<CarKit> kitOfAuto1 = auto3_1.getCarKit();
-//		
-//		Iterator<CarKit> itr = kitOfAuto1.iterator();
-//		System.out.println("size of kitOfAuto1 = " + kitOfAuto1.size());
-//		
-//		while(itr.hasNext()){
-//			CarKit sample = itr.next();
-//			System.out.println(sample);
-//			System.out.println();
-//		}
+		Set<CarKit> kitOfAuto1 = auto3_1.getCarKit();
+
+		Iterator<CarKit> itr = kitOfAuto1.iterator();
+		System.out.println("size of kitOfAuto1 = " + kitOfAuto1.size());
+
+		while(itr.hasNext()){
+			CarKit sample = itr.next();
+			System.out.println(sample);
+			System.out.println();
+		}
 		
 		
 		dao.endingSession();
